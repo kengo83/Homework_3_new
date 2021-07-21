@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>eelテスト</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="card">
+            <div class="card-body">
+                <h2>eelテスト</h2>
+            </div>
+        </div>
+        <form name="form1" action="自分のサイトのURL" method="post">
+            <div class="alert alert-primary" role="alert">
+                csvファイル名<input type="search" id="search_csv">
+            </div>
+            <div class="alert alert-primary" role="alert">
+                csvファイルの保存先のpath<input type="search" id="decide_path">
+            </div>
+            <div class="alert alert-primary" role="alert">
+                検索ワード入力<input type="search" id="search_word">
+                <input type="button" id="btn5" value="検索" onclick="return check();">
+            </div>
+        </form>
+        <textarea id="mytextarea" class="area1" name="result" rows="50" cols="70"></textarea>
+
+        <script type="text/javascript">
+            function check(){
+                if (document.form1.search_word.value==""){
+                    alert("何か入力して下さい");
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        </script>
+
+        <script type="text/javascript" src="./eel.js"></script>
+        <script>
+            document.getElementById("btn5").addEventListener('click', () => {
+                eel.kimetsu_search(search_word.value,search_csv.value,decide_path.value)
+            })
+
+            eel.expose(view_log_js)
+            function view_log_js(text){
+                mytextarea.value += text + '\n'
+            }
+        </script>
+    </body>
+</html>
+© 2021 GitHub, Inc.
